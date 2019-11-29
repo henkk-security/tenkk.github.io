@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://tenkk.xyz">
-  <title>Tenkk小小的blog</title>
+  <title>使用VS2017编译netcat全部功能并免杀国内杀软 | Tenkk小小的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tenkk小小的blog">
-<meta property="og:url" content="http://tenkk.xyz/index.html">
+  <meta name="description" content="最近要用nc的地方多了起来，在网上找了nc的win版本，但是刚解压，俩运行文件就被我的火绒给杀掉并且找也找不回来，于是自己编译下来，看看怎么绕过杀软。 #准备netcat win版本以及源码下载地址:  https://eternallybored.org/misc/netcat/我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。vs版本应该是每个版本都可">
+<meta name="keywords" content="教程,工具,WIN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用VS2017编译netcat全部功能并免杀国内杀软">
+<meta property="og:url" content="http://tenkk.xyz/2019/11/29/使用VS2017编译netcat全部功能并免杀国内杀软/index.html">
 <meta property="og:site_name" content="Tenkk小小的blog">
+<meta property="og:description" content="最近要用nc的地方多了起来，在网上找了nc的win版本，但是刚解压，俩运行文件就被我的火绒给杀掉并且找也找不回来，于是自己编译下来，看看怎么绕过杀软。 #准备netcat win版本以及源码下载地址:  https://eternallybored.org/misc/netcat/我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。vs版本应该是每个版本都可">
 <meta property="og:locale" content="cn">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/29/QEC6un.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/29/QECrcj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/29/QECsjs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/29/QECD3Q.png">
+<meta property="og:updated_time" content="2019-11-29T13:09:33.849Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tenkk小小的blog">
+<meta name="twitter:title" content="使用VS2017编译netcat全部功能并免杀国内杀软">
+<meta name="twitter:description" content="最近要用nc的地方多了起来，在网上找了nc的win版本，但是刚解压，俩运行文件就被我的火绒给杀掉并且找也找不回来，于是自己编译下来，看看怎么绕过杀软。 #准备netcat win版本以及源码下载地址:  https://eternallybored.org/misc/netcat/我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。vs版本应该是每个版本都可">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/29/QEC6un.png">
   
     <link rel="alternative" href="/atom.xml" title="Tenkk小小的blog" type="application/atom+xml">
   
@@ -133,16 +143,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-使用VS2017编译netcat全部功能并免杀国内杀软" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-使用VS2017编译netcat全部功能并免杀国内杀软" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/29/使用VS2017编译netcat全部功能并免杀国内杀软/">使用VS2017编译netcat全部功能并免杀国内杀软</a>
+    <h1 class="article-title" itemprop="name">
+      使用VS2017编译netcat全部功能并免杀国内杀软
     </h1>
   
 
@@ -200,16 +208,24 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/29/使用VS2017编译netcat全部功能并免杀国内杀软/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/29/记-水-一次发现xss漏洞经历/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记(水)一次发现xss漏洞经历</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -228,6 +244,16 @@
 </aside>
 
 
+
+  
+  
+  
+
+  
+
+  
+
+  
 
 
   <section id="comments" style="margin:10px;padding:10px;background:#fff;">
@@ -251,214 +277,6 @@
 </script>
 
   </section>
-
-  
-    <article id="post-记-水-一次发现xss漏洞经历" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/29/记-水-一次发现xss漏洞经历/">记(水)一次发现xss漏洞经历</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/29/记-水-一次发现xss漏洞经历/" class="archive-article-date">
-  	<time datetime="2019-11-29T12:58:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>挖洞挖不出，最近对自己的能力产生了怀疑。<br>荒废了一段时间，发现了新的悬赏平台，随便找到一个厂商，进去搞搞。<br>开局一个搜索框，内容全靠猜，<br><img src="https://s2.ax1x.com/2019/11/29/QE92fe.png" alt><br>有戏！<br>试了试常规的，发现<code>document.cookie</code>,<code>&lt;script&gt;</code>全被狗拦截。<br><img src="https://s2.ax1x.com/2019/11/29/QE9gYD.png" alt><br>最多也就能利用<code>&lt;div onmouseover=&#39;alert&amp;lpar;1&amp;rpar;&#39;&gt;DIV&lt;/div&gt;</code>弹弹窗啥的<br><img src="https://s2.ax1x.com/2019/11/29/QE9sw6.png" alt><br>算了大小也算个洞，假装中危提交上去算了。<br>睡了个午觉，突然想起来以前看到的师傅利用长字符串绕狗，我也试试？<br>在搜索框中复制多次<code>&lt;div onmouseover=&#39;alert&amp;lpar;1&amp;rpar;&#39;&gt;DIV&lt;/div&gt;</code>  最后加上<code>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code>，成了！<br><img src="https://s2.ax1x.com/2019/11/29/QE9yTK.png" alt><br>哈哈哈，网络安全从入门到入狱又进了一步呢。</p>
-<p><del>后记：说是重复漏洞，厂商不想修，浪费时间</del></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">挖洞</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">水文</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/29/记-水-一次发现xss漏洞经历/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  <section id="comments" style="margin:10px;padding:10px;background:#fff;">
-    <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "pcr4M3Yjz6vlS0C9WzjicPuF-MdYXbMMI",
-            app_key: "N1g3hS1JsdREoVzRs8zDoQwh",
-            placeholder: "不说点什么？",
-            avatar:"hide"
-        });
-    }
-</script>
-
-  </section>
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/24/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/24/hello-world/" class="archive-article-date">
-  	<time datetime="2019-09-24T13:25:01.903Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录下此blog搭建过程<br><code>基于hexo，使用githubpage，加入看板娘功能，在Mac系统下安装..</code></p>
-<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>安装Node.js，修改npm源</p>
-<p>算了 困了 不想写了 </p>
-<p>QAQ真佩服那些写得下去的人</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">None</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/24/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  <section id="comments" style="margin:10px;padding:10px;background:#fff;">
-    <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "pcr4M3Yjz6vlS0C9WzjicPuF-MdYXbMMI",
-            app_key: "N1g3hS1JsdREoVzRs8zDoQwh",
-            placeholder: "不说点什么？",
-            avatar:"hide"
-        });
-    }
-</script>
-
-  </section>
-
-  
-  
-
 
           </div>
         </div>
@@ -480,8 +298,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
