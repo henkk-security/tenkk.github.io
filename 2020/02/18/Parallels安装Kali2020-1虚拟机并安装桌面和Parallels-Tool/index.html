@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://tenkk.xyz">
   <title>Parallels安装Kali2020.1虚拟机并安装桌面和Parallels Tool | Tenkk小小的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Kali2020进行了很大的更新，记录下使用Parallels安装过程 #安装虚拟机  官网下载最新kali镜像 https://www.kali.org/downloads/ （博主下载时间是2020年2月17日） 镜像文件导入parallels，不会自动识别，手动选择镜像类别为kali即可 安装镜像时，不懂的全部点下一步即可。配置软件包管理时会报错，报错后点击返回，选择“是”，继续安装，将所有">
+  <meta name="description" content="Kali2020进行了很大的更新，记录下使用Parallels安装过程 安装虚拟机 官网下载最新kali镜像 https://www.kali.org/downloads/ （博主下载时间是2020年2月17日） 镜像文件导入parallels，不会自动识别，手动选择镜像类别为kali即可 安装镜像时，不懂的全部点下一步即可。配置软件包管理时会报错，报错后点击返回，选择“是”，继续安装，将所有功能">
 <meta name="keywords" content="虚拟机,MacOS平台">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Parallels安装Kali2020.1虚拟机并安装桌面和Parallels Tool">
 <meta property="og:url" content="http://tenkk.xyz/2020/02/18/Parallels安装Kali2020-1虚拟机并安装桌面和Parallels-Tool/index.html">
 <meta property="og:site_name" content="Tenkk小小的blog">
-<meta property="og:description" content="Kali2020进行了很大的更新，记录下使用Parallels安装过程 #安装虚拟机  官网下载最新kali镜像 https://www.kali.org/downloads/ （博主下载时间是2020年2月17日） 镜像文件导入parallels，不会自动识别，手动选择镜像类别为kali即可 安装镜像时，不懂的全部点下一步即可。配置软件包管理时会报错，报错后点击返回，选择“是”，继续安装，将所有">
+<meta property="og:description" content="Kali2020进行了很大的更新，记录下使用Parallels安装过程 安装虚拟机 官网下载最新kali镜像 https://www.kali.org/downloads/ （博主下载时间是2020年2月17日） 镜像文件导入parallels，不会自动识别，手动选择镜像类别为kali即可 安装镜像时，不懂的全部点下一步即可。配置软件包管理时会报错，报错后点击返回，选择“是”，继续安装，将所有功能">
 <meta property="og:locale" content="cn">
-<meta property="og:updated_time" content="2020-02-18T04:05:08.881Z">
+<meta property="og:updated_time" content="2020-02-18T04:08:13.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Parallels安装Kali2020.1虚拟机并安装桌面和Parallels Tool">
-<meta name="twitter:description" content="Kali2020进行了很大的更新，记录下使用Parallels安装过程 #安装虚拟机  官网下载最新kali镜像 https://www.kali.org/downloads/ （博主下载时间是2020年2月17日） 镜像文件导入parallels，不会自动识别，手动选择镜像类别为kali即可 安装镜像时，不懂的全部点下一步即可。配置软件包管理时会报错，报错后点击返回，选择“是”，继续安装，将所有">
+<meta name="twitter:description" content="Kali2020进行了很大的更新，记录下使用Parallels安装过程 安装虚拟机 官网下载最新kali镜像 https://www.kali.org/downloads/ （博主下载时间是2020年2月17日） 镜像文件导入parallels，不会自动识别，手动选择镜像类别为kali即可 安装镜像时，不懂的全部点下一步即可。配置软件包管理时会报错，报错后点击返回，选择“是”，继续安装，将所有功能">
   
     <link rel="alternative" href="/atom.xml" title="Tenkk小小的blog" type="application/atom+xml">
   
@@ -159,13 +159,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Kali2020进行了很大的更新，记录下使用Parallels安装过程</p>
-<p>#安装虚拟机</p>
-<ol>
+<h1 id="安装虚拟机"><a href="#安装虚拟机" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h1><ol>
 <li>官网下载最新kali镜像 <a href="https://www.kali.org/downloads/" target="_blank" rel="noopener">https://www.kali.org/downloads/</a> （博主下载时间是2020年2月17日）</li>
 <li>镜像文件导入parallels，不会自动识别，手动选择镜像类别为kali即可</li>
-<li>安装镜像时，不懂的全部点下一步即可。<br>配置软件包管理时会报错，报错后点击返回，选择“是”，继续安装，将所有功能钩上。<br>#安装桌面</li>
+<li>安装镜像时，不懂的全部点下一步即可。<br>配置软件包管理时会报错，报错后点击返回，选择“是”，继续安装，将所有功能钩上。<h1 id="安装桌面"><a href="#安装桌面" class="headerlink" title="安装桌面"></a>安装桌面</h1></li>
 <li>当前版本是没有桌面环境的，账号密码登陆，网上说使用官方镜像源，但是我的电脑不行，不知道是不是我家的dns出了问题，还是官网问题，懒得找原因，直接把镜像设置为中科大的源<br><code>sudo vim /etc/apt/sources.list</code><br>删除里面所有内容添加下面内容<br><code>deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</code><br><code>deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</code></li>
-<li>常规操作，安装桌面程序以及中文字体<br><code>apt-get update</code><br><code>apt-get install x-window-system-core xfce4  -y</code><br>如果安装时选择的中文安装，会出现乱码，使用下面命令安装字体：<br><code>apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy</code><br>重启虚拟机即可<br>#安装Parallels Tool<br>Parallels的虚拟机需要安装Parallels Tool才能访问Mac主机的文件夹，以及共享粘贴板等操作。因为最新版本的kali的内核比较新，tool无法直接进行安装，需要手动安装依赖。</li>
+<li>常规操作，安装桌面程序以及中文字体<br><code>apt-get update</code><br><code>apt-get install x-window-system-core xfce4  -y</code><br>如果安装时选择的中文安装，会出现乱码，使用下面命令安装字体：<br><code>apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy</code><br>重启虚拟机即可<h1 id="安装Parallels-Tool"><a href="#安装Parallels-Tool" class="headerlink" title="安装Parallels Tool"></a>安装Parallels Tool</h1>Parallels的虚拟机需要安装Parallels Tool才能访问Mac主机的文件夹，以及共享粘贴板等操作。因为最新版本的kali的内核比较新，tool无法直接进行安装，需要手动安装依赖。</li>
 <li>先<code>uname -a</code> 确认内核版本信息，去官方<a href="http://http.kali.org/kali/pool/main/l/linux/下载对应内核文件，用dkpg" target="_blank" rel="noopener">http://http.kali.org/kali/pool/main/l/linux/下载对应内核文件，用dkpg</a> -i 命令安装，第三个安装时会报错，没有gcc 直接按提示用fix命令之后重新安装即可<br>三个文件名称分别为（如果内核版本有更新，请选择对应内核版本，注意是amd不是arm）：<br><code>linux-kbuild-5.4_5.4.8-1kali1_amd64.deb</code><br><code>linux-headers-5.4.0-kali2-common_5.4.8-1kali1_all.deb</code><br><code>linux-headers-5.4.0-kali2-amd64_5.4.8-1kali1_amd64.deb</code></li>
 <li>上面三个安装完成后，挂载tool镜像（在虚拟机窗口右上角有个黄色三角感叹号进行挂载），虚拟机桌面会出现镜像文件，复制镜像的所有文件到一个文件夹，进入文件夹使用<code>sudo ./install</code>进行安装，重启虚拟机即可</li>
 </ol>

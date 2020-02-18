@@ -156,13 +156,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Kali2020进行了很大的更新，记录下使用Parallels安装过程</p>
-<p>#安装虚拟机</p>
-<ol>
+<h1 id="安装虚拟机"><a href="#安装虚拟机" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h1><ol>
 <li>官网下载最新kali镜像 <a href="https://www.kali.org/downloads/" target="_blank" rel="noopener">https://www.kali.org/downloads/</a> （博主下载时间是2020年2月17日）</li>
 <li>镜像文件导入parallels，不会自动识别，手动选择镜像类别为kali即可</li>
-<li>安装镜像时，不懂的全部点下一步即可。<br>配置软件包管理时会报错，报错后点击返回，选择“是”，继续安装，将所有功能钩上。<br>#安装桌面</li>
+<li>安装镜像时，不懂的全部点下一步即可。<br>配置软件包管理时会报错，报错后点击返回，选择“是”，继续安装，将所有功能钩上。<h1 id="安装桌面"><a href="#安装桌面" class="headerlink" title="安装桌面"></a>安装桌面</h1></li>
 <li>当前版本是没有桌面环境的，账号密码登陆，网上说使用官方镜像源，但是我的电脑不行，不知道是不是我家的dns出了问题，还是官网问题，懒得找原因，直接把镜像设置为中科大的源<br><code>sudo vim /etc/apt/sources.list</code><br>删除里面所有内容添加下面内容<br><code>deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</code><br><code>deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</code></li>
-<li>常规操作，安装桌面程序以及中文字体<br><code>apt-get update</code><br><code>apt-get install x-window-system-core xfce4  -y</code><br>如果安装时选择的中文安装，会出现乱码，使用下面命令安装字体：<br><code>apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy</code><br>重启虚拟机即可<br>#安装Parallels Tool<br>Parallels的虚拟机需要安装Parallels Tool才能访问Mac主机的文件夹，以及共享粘贴板等操作。因为最新版本的kali的内核比较新，tool无法直接进行安装，需要手动安装依赖。</li>
+<li>常规操作，安装桌面程序以及中文字体<br><code>apt-get update</code><br><code>apt-get install x-window-system-core xfce4  -y</code><br>如果安装时选择的中文安装，会出现乱码，使用下面命令安装字体：<br><code>apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy</code><br>重启虚拟机即可<h1 id="安装Parallels-Tool"><a href="#安装Parallels-Tool" class="headerlink" title="安装Parallels Tool"></a>安装Parallels Tool</h1>Parallels的虚拟机需要安装Parallels Tool才能访问Mac主机的文件夹，以及共享粘贴板等操作。因为最新版本的kali的内核比较新，tool无法直接进行安装，需要手动安装依赖。</li>
 <li>先<code>uname -a</code> 确认内核版本信息，去官方<a href="http://http.kali.org/kali/pool/main/l/linux/下载对应内核文件，用dkpg" target="_blank" rel="noopener">http://http.kali.org/kali/pool/main/l/linux/下载对应内核文件，用dkpg</a> -i 命令安装，第三个安装时会报错，没有gcc 直接按提示用fix命令之后重新安装即可<br>三个文件名称分别为（如果内核版本有更新，请选择对应内核版本，注意是amd不是arm）：<br><code>linux-kbuild-5.4_5.4.8-1kali1_amd64.deb</code><br><code>linux-headers-5.4.0-kali2-common_5.4.8-1kali1_all.deb</code><br><code>linux-headers-5.4.0-kali2-amd64_5.4.8-1kali1_amd64.deb</code></li>
 <li>上面三个安装完成后，挂载tool镜像（在虚拟机窗口右上角有个黄色三角感叹号进行挂载），虚拟机桌面会出现镜像文件，复制镜像的所有文件到一个文件夹，进入文件夹使用<code>sudo ./install</code>进行安装，重启虚拟机即可</li>
 </ol>
@@ -266,7 +265,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近要用nc的地方多了起来，在网上找了nc的win版本，但是刚解压，俩运行文件就被我的火绒给杀掉并且找也找不回来，于是自己编译下来，看看怎么绕过杀软。</p>
-<p>#准备<br>netcat win版本以及源码下载地址:  <a href="https://eternallybored.org/misc/netcat/" target="_blank" rel="noopener">https://eternallybored.org/misc/netcat/</a><br>我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。<br>vs版本应该是每个版本都可以，我试过2015以及2017版本，下面使用2017版本的截图，其他版本类似。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>netcat win版本以及源码下载地址:  <a href="https://eternallybored.org/misc/netcat/" target="_blank" rel="noopener">https://eternallybored.org/misc/netcat/</a><br>我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。<br>vs版本应该是每个版本都可以，我试过2015以及2017版本，下面使用2017版本的截图，其他版本类似。</p>
 <p>#导入vs工程并开启所有功能</p>
 <ol>
 <li><p>新建一个vs的c++空项目，右键项目属性页-&gt;c/c++-&gt;SDL检查-&gt;否<br><img src="https://s2.ax1x.com/2019/11/29/QEC6un.png" alt></p>
@@ -276,7 +275,8 @@
 </li>
 <li><p>Ctrl+H 替换几个文件所有的<code>WIN32</code>字符为<code>_WIN32</code></p>
 </li>
-<li><p>链接中的netcat源码关闭了-e命令以及-t命令，为了使功能完全，需要进行修改。在对应的位置加上预处理<code>#defind GAPING_SECURITY_HOLE</code>和<code>#defind TELNET</code>，不知道添加在哪，就所有.h和.c文件最前面加上即可。<br>#免杀<br>现在的程序编译出来还是直接就被火绒杀掉，所以不是通过单独的md5判断进行查杀。经过我的测试，火绒是根据字符串查找进行查杀，最后定位到了<code>nc -l -p port [options] [hostname] [port]</code>字符。<br><img src="https://s2.ax1x.com/2019/11/29/QECsjs.png" alt><br>这是<code>nc -h</code>命令输出的帮助字符，所以只要把这串字任意字母增删改一下，火绒就不会杀掉编译出来的文件了，其他杀软没有经过测试，不知道能否免杀。当然，对netcat命令熟悉的，或者不需要help命令的可以在<code>netcat.c</code>文件前面将<code>#define HAVE_HELP</code>命令注释掉即可。<br><img src="https://s2.ax1x.com/2019/11/29/QECD3Q.png" alt></p>
+<li><p>链接中的netcat源码关闭了-e命令以及-t命令，为了使功能完全，需要进行修改。在对应的位置加上预处理<code>#defind GAPING_SECURITY_HOLE</code>和<code>#defind TELNET</code>，不知道添加在哪，就所有.h和.c文件最前面加上即可。</p>
+<h1 id="免杀"><a href="#免杀" class="headerlink" title="免杀"></a>免杀</h1><p>现在的程序编译出来还是直接就被火绒杀掉，所以不是通过单独的md5判断进行查杀。经过我的测试，火绒是根据字符串查找进行查杀，最后定位到了<code>nc -l -p port [options] [hostname] [port]</code>字符。<br><img src="https://s2.ax1x.com/2019/11/29/QECsjs.png" alt><br>这是<code>nc -h</code>命令输出的帮助字符，所以只要把这串字任意字母增删改一下，火绒就不会杀掉编译出来的文件了，其他杀软没有经过测试，不知道能否免杀。当然，对netcat命令熟悉的，或者不需要help命令的可以在<code>netcat.c</code>文件前面将<code>#define HAVE_HELP</code>命令注释掉即可。<br><img src="https://s2.ax1x.com/2019/11/29/QECD3Q.png" alt></p>
 </li>
 </ol>
 <p>注释掉之后，我测试过国内主流杀软，都不会判毒。</p>

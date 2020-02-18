@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="http://tenkk.xyz">
   <title>使用VS2017编译netcat全部功能并免杀国内杀软 | Tenkk小小的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近要用nc的地方多了起来，在网上找了nc的win版本，但是刚解压，俩运行文件就被我的火绒给杀掉并且找也找不回来，于是自己编译下来，看看怎么绕过杀软。 #准备netcat win版本以及源码下载地址:  https://eternallybored.org/misc/netcat/我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。vs版本应该是每个版本都可">
+  <meta name="description" content="最近要用nc的地方多了起来，在网上找了nc的win版本，但是刚解压，俩运行文件就被我的火绒给杀掉并且找也找不回来，于是自己编译下来，看看怎么绕过杀软。 准备netcat win版本以及源码下载地址:  https://eternallybored.org/misc/netcat/我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。vs版本应该是每个版本都可以">
 <meta name="keywords" content="教程,工具,WIN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用VS2017编译netcat全部功能并免杀国内杀软">
 <meta property="og:url" content="http://tenkk.xyz/2019/11/29/使用VS2017编译netcat全部功能并免杀国内杀软/index.html">
 <meta property="og:site_name" content="Tenkk小小的blog">
-<meta property="og:description" content="最近要用nc的地方多了起来，在网上找了nc的win版本，但是刚解压，俩运行文件就被我的火绒给杀掉并且找也找不回来，于是自己编译下来，看看怎么绕过杀软。 #准备netcat win版本以及源码下载地址:  https://eternallybored.org/misc/netcat/我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。vs版本应该是每个版本都可">
+<meta property="og:description" content="最近要用nc的地方多了起来，在网上找了nc的win版本，但是刚解压，俩运行文件就被我的火绒给杀掉并且找也找不回来，于是自己编译下来，看看怎么绕过杀软。 准备netcat win版本以及源码下载地址:  https://eternallybored.org/misc/netcat/我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。vs版本应该是每个版本都可以">
 <meta property="og:locale" content="cn">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/29/QEC6un.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/29/QECrcj.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/29/QECsjs.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/29/QECD3Q.png">
-<meta property="og:updated_time" content="2019-11-29T13:09:33.849Z">
+<meta property="og:updated_time" content="2020-02-18T04:08:14.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用VS2017编译netcat全部功能并免杀国内杀软">
-<meta name="twitter:description" content="最近要用nc的地方多了起来，在网上找了nc的win版本，但是刚解压，俩运行文件就被我的火绒给杀掉并且找也找不回来，于是自己编译下来，看看怎么绕过杀软。 #准备netcat win版本以及源码下载地址:  https://eternallybored.org/misc/netcat/我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。vs版本应该是每个版本都可">
+<meta name="twitter:description" content="最近要用nc的地方多了起来，在网上找了nc的win版本，但是刚解压，俩运行文件就被我的火绒给杀掉并且找也找不回来，于是自己编译下来，看看怎么绕过杀软。 准备netcat win版本以及源码下载地址:  https://eternallybored.org/misc/netcat/我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。vs版本应该是每个版本都可以">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/11/29/QEC6un.png">
   
     <link rel="alternative" href="/atom.xml" title="Tenkk小小的blog" type="application/atom+xml">
@@ -164,7 +164,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近要用nc的地方多了起来，在网上找了nc的win版本，但是刚解压，俩运行文件就被我的火绒给杀掉并且找也找不回来，于是自己编译下来，看看怎么绕过杀软。</p>
-<p>#准备<br>netcat win版本以及源码下载地址:  <a href="https://eternallybored.org/misc/netcat/" target="_blank" rel="noopener">https://eternallybored.org/misc/netcat/</a><br>我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。<br>vs版本应该是每个版本都可以，我试过2015以及2017版本，下面使用2017版本的截图，其他版本类似。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>netcat win版本以及源码下载地址:  <a href="https://eternallybored.org/misc/netcat/" target="_blank" rel="noopener">https://eternallybored.org/misc/netcat/</a><br>我个人比较喜欢使用VS进行编译，也可以用winGW。winGW的网上资料应该很多，不多叙述。<br>vs版本应该是每个版本都可以，我试过2015以及2017版本，下面使用2017版本的截图，其他版本类似。</p>
 <p>#导入vs工程并开启所有功能</p>
 <ol>
 <li><p>新建一个vs的c++空项目，右键项目属性页-&gt;c/c++-&gt;SDL检查-&gt;否<br><img src="https://s2.ax1x.com/2019/11/29/QEC6un.png" alt></p>
@@ -174,7 +174,8 @@
 </li>
 <li><p>Ctrl+H 替换几个文件所有的<code>WIN32</code>字符为<code>_WIN32</code></p>
 </li>
-<li><p>链接中的netcat源码关闭了-e命令以及-t命令，为了使功能完全，需要进行修改。在对应的位置加上预处理<code>#defind GAPING_SECURITY_HOLE</code>和<code>#defind TELNET</code>，不知道添加在哪，就所有.h和.c文件最前面加上即可。<br>#免杀<br>现在的程序编译出来还是直接就被火绒杀掉，所以不是通过单独的md5判断进行查杀。经过我的测试，火绒是根据字符串查找进行查杀，最后定位到了<code>nc -l -p port [options] [hostname] [port]</code>字符。<br><img src="https://s2.ax1x.com/2019/11/29/QECsjs.png" alt><br>这是<code>nc -h</code>命令输出的帮助字符，所以只要把这串字任意字母增删改一下，火绒就不会杀掉编译出来的文件了，其他杀软没有经过测试，不知道能否免杀。当然，对netcat命令熟悉的，或者不需要help命令的可以在<code>netcat.c</code>文件前面将<code>#define HAVE_HELP</code>命令注释掉即可。<br><img src="https://s2.ax1x.com/2019/11/29/QECD3Q.png" alt></p>
+<li><p>链接中的netcat源码关闭了-e命令以及-t命令，为了使功能完全，需要进行修改。在对应的位置加上预处理<code>#defind GAPING_SECURITY_HOLE</code>和<code>#defind TELNET</code>，不知道添加在哪，就所有.h和.c文件最前面加上即可。</p>
+<h1 id="免杀"><a href="#免杀" class="headerlink" title="免杀"></a>免杀</h1><p>现在的程序编译出来还是直接就被火绒杀掉，所以不是通过单独的md5判断进行查杀。经过我的测试，火绒是根据字符串查找进行查杀，最后定位到了<code>nc -l -p port [options] [hostname] [port]</code>字符。<br><img src="https://s2.ax1x.com/2019/11/29/QECsjs.png" alt><br>这是<code>nc -h</code>命令输出的帮助字符，所以只要把这串字任意字母增删改一下，火绒就不会杀掉编译出来的文件了，其他杀软没有经过测试，不知道能否免杀。当然，对netcat命令熟悉的，或者不需要help命令的可以在<code>netcat.c</code>文件前面将<code>#define HAVE_HELP</code>命令注释掉即可。<br><img src="https://s2.ax1x.com/2019/11/29/QECD3Q.png" alt></p>
 </li>
 </ol>
 <p>注释掉之后，我测试过国内主流杀软，都不会判毒。</p>
