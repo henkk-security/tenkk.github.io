@@ -135,6 +135,109 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-某厂商csrf-xss漏洞发现过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/24/某厂商csrf-xss漏洞发现过程/">记匿名某厂商的csrf+xss组合漏洞发现过程</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/24/某厂商csrf-xss漏洞发现过程/" class="archive-article-date">
+  	<time datetime="2020-03-24T09:27:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>挖了两天某匿名厂商的漏洞，大厂安全措施还是做的挺好的，虽然小问题挺多，但都大多都利用不上。<br>在文章发布处进行xss fuzz(对国内网站进行渗透，我推荐这个字典：<code>https://github.com/TheKingOfDuck/fuzzDicts</code>，对国外网站推荐这个：<code>https://github.com/danielmiessler/SecLists</code>)，发现保存草稿后会弹窗，但发布之后，所有可弹窗的标签全过滤掉了。<br>第一就反应是进行csrf+xxs组合拳，由于文章POST上去数据是json格式，推荐使用fetch，基本所有浏览器都支持：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt; </span><br><span class="line">&lt;title&gt;<span class="built_in">JSON</span> CSRF POC&lt;<span class="regexp">/title&gt; </span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">fetch('https:/</span><span class="regexp">/url', &#123;method: 'POST', credentials: 'include', headers: &#123;'Content-Type': 'text/</span>plain<span class="string">'&#125;, body: '</span>payload<span class="string">'&#125;); </span></span><br><span class="line"><span class="string">&lt;/script&gt; </span></span><br><span class="line"><span class="string">&lt;/form&gt; </span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>浏览器换账号，新建一篇文章，访问此网页后进入文章修改，果然文章根据payload内容替换了，并且弹了窗。<br><img src="https://s1.ax1x.com/2020/03/24/8LEh1f.png" alt><br>由于网站发布文章需要人工审核，也没有对发布后的文章进行测试，我猜想也会被改掉。反正漏洞提交，后续验证就交给厂商了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">挖洞</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/24/某厂商csrf-xss漏洞发现过程/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+    <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "pcr4M3Yjz6vlS0C9WzjicPuF-MdYXbMMI",
+            app_key: "N1g3hS1JsdREoVzRs8zDoQwh",
+            placeholder: "不说点什么？",
+            avatar:"hide"
+        });
+    }
+</script>
+
+  </section>
+
+  
     <article id="post-Parallels安装Kali2020-1虚拟机并安装桌面和Parallels-Tool" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -665,11 +768,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MacOS平台</a>
+                <a href="javascript:void(0)" class="js-tag color3">挖洞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,15 +788,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">挖洞</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">水文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MacOS平台</a>
               </li>
             
             <div class="clearfix"></div>
