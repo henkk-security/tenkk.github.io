@@ -155,10 +155,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>挖了两天某匿名厂商的漏洞，大厂安全措施还是做的挺好的，虽然小问题挺多，但都大多都利用不上。<br>在文章发布处进行xss fuzz(对国内网站进行渗透，我推荐这个字典：<code>https://github.com/TheKingOfDuck/fuzzDicts</code>，对国外网站推荐这个：<code>https://github.com/danielmiessler/SecLists</code>)，发现保存草稿后会弹窗，但发布之后，所有可弹窗的标签全过滤掉了。<br>第一就反应是进行csrf+xxs组合拳，由于文章POST上去数据是json格式，推荐使用fetch，基本所有浏览器都支持：</p>
+        <p>挖了两天某匿名厂商的漏洞，虽说是大厂，安全措施是我渗透网站中比较差的了，小问题挺多。<br>在文章发布处进行xss fuzz(对国内网站进行渗透，我推荐这个字典：<code>https://github.com/TheKingOfDuck/fuzzDicts</code>，对国外网站推荐这个：<code>https://github.com/danielmiessler/SecLists</code>)，发现保存草稿后会弹窗，但发布之后，所有可弹窗的标签全过滤掉了。<br>第一就反应是进行csrf+xxs组合拳，由于文章POST上去数据是json格式，推荐使用fetch，基本所有浏览器都支持（这里直接用burp的csrf调试，但有个问题是，我看fetch不能跨域，但却成功了，没仔细深究）：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt; </span><br><span class="line">&lt;title&gt;<span class="built_in">JSON</span> CSRF POC&lt;<span class="regexp">/title&gt; </span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">fetch('https:/</span><span class="regexp">/url', &#123;method: 'POST', credentials: 'include', headers: &#123;'Content-Type': 'text/</span>plain<span class="string">'&#125;, body: '</span>payload<span class="string">'&#125;); </span></span><br><span class="line"><span class="string">&lt;/script&gt; </span></span><br><span class="line"><span class="string">&lt;/form&gt; </span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>浏览器换账号，新建一篇文章，访问此网页后进入文章修改，果然文章根据payload内容替换了，并且弹了窗。<br><img src="https://s1.ax1x.com/2020/03/24/8LEh1f.png" alt><br>由于网站发布文章需要人工审核，也没有对发布后的文章进行测试，我猜想也会被改掉。反正漏洞提交，后续验证就交给厂商了。</p>
+<p>～～大厂就是不一样，直接以两个无危害漏洞忽略了～～</p>
 
       
 
@@ -764,15 +765,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">None</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">挖洞</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">None</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">水文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -785,10 +790,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WIN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">水文</a>
               </li>
              
               <li class="article-tag-list-item">
