@@ -159,7 +159,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt; </span><br><span class="line">&lt;title&gt;<span class="built_in">JSON</span> CSRF POC&lt;<span class="regexp">/title&gt; </span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">fetch('https:/</span><span class="regexp">/url', &#123;method: 'POST', credentials: 'include', headers: &#123;'Content-Type': 'text/</span>plain<span class="string">'&#125;, body: '</span>payload<span class="string">'&#125;); </span></span><br><span class="line"><span class="string">&lt;/script&gt; </span></span><br><span class="line"><span class="string">&lt;/form&gt; </span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>浏览器换账号，新建一篇文章，访问此网页后进入文章修改，果然文章根据payload内容替换了，并且弹了窗。<br><img src="https://s1.ax1x.com/2020/03/24/8LEh1f.png" alt><br>由于网站发布文章需要人工审核，也没有对发布后的文章进行测试，我猜想也会被改掉。反正漏洞提交，后续验证就交给厂商了。</p>
-<p>～～大厂就是不一样，直接以两个无危害漏洞忽略了～～</p>
+<p><font color="#FFFFFF"><del>大厂就是不一样，直接以两个无危害漏洞忽略了</del></font></p>
 
       
 
@@ -488,7 +488,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>挖洞挖不出，最近对自己的能力产生了怀疑。<br>荒废了一段时间，发现了新的悬赏平台，随便找到一个厂商，进去搞搞。<br>开局一个搜索框，内容全靠猜，<br><img src="https://s2.ax1x.com/2019/11/29/QE92fe.png" alt><br>有戏！<br>试了试常规的，发现<code>document.cookie</code>,<code>&lt;script&gt;</code>全被狗拦截。<br><img src="https://s2.ax1x.com/2019/11/29/QE9gYD.png" alt><br>最多也就能利用<code>&lt;div onmouseover=&#39;alert&amp;lpar;1&amp;rpar;&#39;&gt;DIV&lt;/div&gt;</code>弹弹窗啥的<br><img src="https://s2.ax1x.com/2019/11/29/QE9sw6.png" alt><br>算了大小也算个洞，假装中危提交上去算了。<br>睡了个午觉，突然想起来以前看到的师傅利用长字符串绕狗，我也试试？<br>在搜索框中复制多次<code>&lt;div onmouseover=&#39;alert&amp;lpar;1&amp;rpar;&#39;&gt;DIV&lt;/div&gt;</code>  最后加上<code>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code>，成了！<br><img src="https://s2.ax1x.com/2019/11/29/QE9yTK.png" alt><br>哈哈哈，网络安全从入门到入狱又进了一步呢。</p>
-<p><del>后记：说是重复漏洞，厂商不想修，浪费时间</del></p>
+<p><font color="#FFFFFF"><del>后记：说是重复漏洞，厂商不想修，浪费时间</del></font></p>
 
       
 
@@ -765,19 +765,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">挖洞</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">None</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">水文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -790,6 +778,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WIN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">挖洞</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">水文</a>
               </li>
              
               <li class="article-tag-list-item">
